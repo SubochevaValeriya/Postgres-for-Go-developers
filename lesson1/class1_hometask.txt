@@ -1,0 +1,24 @@
+create database library;
+
+create user myuser password 'secret';
+
+psql -U myuser -d library
+
+CREATE TABLE books (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(255),
+    year DATE,
+    price INT,
+    author_id INT
+);
+
+INSERT INTO books (name, year, price, author_id)
+VALUES ('Дары волхвов', '2022-01-01', 410, 1),
+       ('Приключения Оливера Твиста', '2022-01-01', 1443, 2),
+       ('Рассеянные умы', '2022-01-01', 547, 3);
+
+ Schema |     Name     |   Type   |  Owner
+--------+--------------+----------+----------
+ public | books        | table    | postgres
+ public | books_id_seq | sequence | postgres
+(2 rows)
